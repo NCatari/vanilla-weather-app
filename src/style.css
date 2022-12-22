@@ -52,5 +52,8 @@ li {
   padding: 0;
   font-size: 16px;
   color: #70757a;
+}
+
+li:first-letter {
   text-transform: capitalize;
 }

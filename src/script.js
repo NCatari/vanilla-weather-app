@@ -1,34 +1,45 @@
-function showCity(response) {
-  let h1 = document.querySelector("#city");
-  h1.innerHTML = response.data.name;
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
 }
 
 function showTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
-}
-
-function showCondition(response) {
+  let h1 = document.querySelector("#city");
   let conditionElement = document.querySelector("#condition");
-  conditionElement.innerHTML = response.data.weather[0].description;
-}
-
-function getHumidity(response) {
   let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = response.data.main.humidity;
-}
-
-function getWindspeed(response) {
-  console.log(response.data);
   let windElement = document.querySelector("#wind");
+  let dateElement = document.querySelector("#date");
+
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  h1.innerHTML = response.data.name;
+  conditionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
+  dateElement.innerHTML = formateDate(response.data.dt * 1000);
 }
 
 let apiKey = "1d038ee28ef2727a9f0310860ac10ae9";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${apiKey}&units=metric`;
 
-axios.get(apiUrl).then(showCity);
 axios.get(apiUrl).then(showTemperature);
-axios.get(apiUrl).then(showCondition);
-axios.get(apiUrl).then(getHumidity);
-axios.get(apiUrl).then(getWindspeed);
