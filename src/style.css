@@ -1,3 +1,18 @@
+body {
+  font-family: montserrat;
+}
+
+.weather-app {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  border: 1px solid #dadde1;
+  border-radius: 5px;
+}
+
 h1 {
-  color: red;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #202124;
 }
