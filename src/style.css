@@ -57,3 +57,18 @@ li {
 li:first-letter {
   text-transform: capitalize;
 }
+
+.forecast {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.forecast-date {
+  color: #202124;
+  line-height: 15px;
+  font-size: 18px;
+}
+
+.min {
+  opacity: 0.6;
+}
